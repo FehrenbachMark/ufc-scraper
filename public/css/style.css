@@ -1,0 +1,47 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #770303;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+h1 {
+  color : white;
+  font-size: 6rem;
+  text-align: center;
+}
+h2 {
+  color : white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+main > section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 3rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  color: #FFFFFF;
+}
+
+main section section {
+  width: 300px;
+  /* margin: 10px; */
+  /* padding: 10px; */
+  background-color: #491111;
+  border: 1px solid #360101;
+  border-radius: 5px;
+  text-align: center;
+  /* ad shadow */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+main section img {
+  width: 100%;
+}
