@@ -2,7 +2,8 @@ const PORT = process.env.PORT || 3000;
 const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
-require('dotenv').config()
+const moment = require('moment');
+require('dotenv').config();
 
 const app = express();
 // const PORT = process.env.PORT || 3000;
@@ -44,12 +45,6 @@ axios(url)
       fighterInfo.push(info);
     })
     // console.log(fighterInfo);
-
-
-    var moment = require('moment');
-    // exports.index = function (req, res) {
-    //   res.render('index', { moment: moment });
-    // }
 
 
     app.get('/', (req, res) => {
