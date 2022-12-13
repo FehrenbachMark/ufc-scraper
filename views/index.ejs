@@ -14,8 +14,9 @@
       <section>
         <% for (let i = 0; i < fighters.length; i++) { %>
             <section>
+              <a href="<%= fighterLinks[i] %>" target="_blank">
               <img src="<%= fighterImages[i] %>" alt="">
-              <h2><%= fighters[i] %></h2>
+              <h2><%= fighters[i] %></h2></a>
             </section>
         <% } %>
       </section>

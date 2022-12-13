@@ -21,13 +21,14 @@ axios(url)
     // declare an empty array to store the data that we'll scrape
     const fighters = [];
     const fighterImages = [];
+    const fighterLinks = [];
     // finds the class of the element that we want to scrape from ufc dom and pulls the fighter info from that element.
     $('.ath-n__name', html).each(function() {
       
       const athletes = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
       const url = $(this).find('a').attr('href');
-      fighters.push(athletes);
-      // console.log(url);
+      fighters.push(athletes.split(/(?=[A-Z])/).join(' '));
+      fighterLinks.push("https://ufc.com" + url);
     });
     // console.log(fighters);
 
@@ -40,7 +41,7 @@ axios(url)
 
     // add fighters to index.ejs
     app.get('/', (req, res) => {
-      res.render('index', { fighters: fighters, fighterImages: fighterImages });
+      res.render('index', { fighters: fighters, fighterImages: fighterImages, fighterLinks: fighterLinks });
     });
 
   })
