@@ -7,7 +7,7 @@ This is a scraper for ufc.com. It is a work in progress.
 ## Usage
 
 ```bash
-$ python3 ufc.py
+$ nodemon index.js
 ```
 
 ## Dependencies
