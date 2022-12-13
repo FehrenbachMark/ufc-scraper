@@ -22,7 +22,7 @@ $ node index.js
 
 ## License
 
-[MIT](LICENSE) © [Jesse Duffield](
+[MIT](LICENSE) © 
 
 ## Contributing
 
