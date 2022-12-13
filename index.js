@@ -1,6 +1,4 @@
-return
-
-const PORT = 8000
+const PORT = 3000
 const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
