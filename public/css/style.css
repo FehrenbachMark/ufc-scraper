@@ -47,3 +47,10 @@ main section section {
 main section img {
   width: 100%;
 }
+span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  text-align: center;
+}

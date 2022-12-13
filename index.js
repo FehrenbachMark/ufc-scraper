@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-
 const url = 'https://www.ufc.com/athletes'
 axios(url)
   .then(response => {
@@ -25,8 +24,8 @@ axios(url)
     const fighterImages = [];
     const fighterLinks = [];
     // finds the class of the element that we want to scrape from ufc dom and pulls the fighter info from that element.
-    $('.ath-n__name', html).each(function() {
-      
+    $('.ath-n__name', html).each(function () {
+
       const athletes = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
       const url = $(this).find('a').attr('href');
       fighters.push(athletes.split(/(?=[A-Z])/).join(' '));
@@ -34,20 +33,27 @@ axios(url)
     });
     // console.log(fighters);
 
-    $('.c-embedded-single-media__item', html).each(function() {
+    $('.c-embedded-single-media__item', html).each(function () {
       const image = $(this).find('img').attr('src');
       // add images to fighterImagers array
       fighterImages.push(image);
     })
     // console.log(fighterImages);
-    $('.ath--winfo', html).each(function() {
+    $('.ath--winfo', html).each(function () {
       const info = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
       fighterInfo.push(info);
     })
     // console.log(fighterInfo);
-    // add fighters to index.ejs
+
+
+    var moment = require('moment');
+    // exports.index = function (req, res) {
+    //   res.render('index', { moment: moment });
+    // }
+
+
     app.get('/', (req, res) => {
-      res.render('index', { fighters: fighters, fighterImages: fighterImages, fighterLinks: fighterLinks, fighterInfo: fighterInfo });
+      res.render('index', { fighters: fighters, fighterImages: fighterImages, fighterLinks: fighterLinks, fighterInfo: fighterInfo, moment: moment });
     });
 
   })

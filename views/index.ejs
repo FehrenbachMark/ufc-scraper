@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <!-- link favicon -->
+    <link rel="icon" href="favicon.png" type="image/x-icon">
     <title>Document</title>
 </head>
 <body>
   <main>
-    <h1>The current UFC Champions</h1>
-      <!-- display all fighter names and images from /index.js -->
+    <h1>Current UFC Champions</h1>
       <section>
         <% for (let i = 0; i < fighters.length; i++) { %>
             <section>
@@ -21,6 +22,8 @@
             </section>
         <% } %>
       </section>
+      <span>As of: <%= moment().format('Do MMMM, YYYY'); %></span>
+      <script type="text/html" src="/js/main.js"></script>
   </main>
     
 </body>
