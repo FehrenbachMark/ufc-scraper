@@ -7,15 +7,17 @@ This is a scraper for ufc.com. It is a work in progress.
 ## Usage
 
 ```bash
-$ nodemon index.js
+$ node index.js
 ```
 
 ## Dependencies
 
--   [Express](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
--   [EJS](http://docs.python-requests.org/en/master/)
--   [Cheerio](https://pandas.pydata.org/)
--   [Axiom](https://pandas.pydata.org/)
+-   [Express](https://expressjs.com/)
+-   [EJS](https://ejs.co/)
+-   [Cheerio](https://cheerio.js.org/)
+-   [Axios](https://github.com/axios/axios)
+-   [dotenv](https://www.npmjs.com/package/dotenv)
+-   [moment](https://momentjs.com/)
 
 
 ## License
