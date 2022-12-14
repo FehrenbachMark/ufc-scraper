@@ -42,7 +42,9 @@ axios(url)
     // console.log(fighterImages);
     $('.ath--winfo', html).each(function () {
       const info = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
-      fighterInfo.push(info);
+      let newInfo = info.split(/(?=[A-Z])/).join(' ');
+      let formattedFighterInfo = newInfo.replace(/\d+/, " $&");
+      fighterInfo.push(formattedFighterInfo);
     })
     // console.log(fighterInfo);
 
