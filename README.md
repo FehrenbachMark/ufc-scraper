@@ -1,8 +1,6 @@
-<!-- generate  readme for scraping ufc.com -->
-
 # UFC.com scraper
 
-This is a scraper for ufc.com. It is a work in progress.
+This is a web scraper for pulling the current champions from ufc.com. It is a work in progress.
 
 ## Usage
 
