@@ -1,4 +1,4 @@
-# UFC.com scraper
+# UFC.com champion scraper
 
 This is a web scraper for pulling the current champions from ufc.com. It is a work in progress.
 
