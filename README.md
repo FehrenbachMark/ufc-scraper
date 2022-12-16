@@ -20,7 +20,7 @@ $ node index.js
 
 ## License
 
-[MIT](LICENSE) © 
+[MIT](https://github.com/FehrenbachMark/ufc-scraper/blob/main/license.txt) © 
 
 ## Contributing
 
