@@ -24,7 +24,7 @@ $ node index.js
 
 ## Contributing
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](#)
+This is for educational purposes only. Please do not contribute.
 
 ## Author
 
