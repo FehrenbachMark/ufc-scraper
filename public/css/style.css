@@ -43,10 +43,18 @@ main section section {
   text-align: center;
   /* ad shadow */
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
+
 main section img {
   width: 100%;
 }
+
+main section img:hover {
+  transform: scale(5.0);
+  transition: all 0.5s ease-in-out;
+}
+
 span {
   display: block;
   font-size: 1.5rem;
