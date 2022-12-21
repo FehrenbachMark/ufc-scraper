@@ -24,6 +24,7 @@ axios(url)
     const fighterInfo = [];
     const fighterImages = [];
     const fighterLinks = [];
+    const lastFight = [];
     // finds the class of the element that we want to scrape from ufc dom and pulls the fighter info from that element.
     $('.ath-n__name', html).each(function () {
 
@@ -48,9 +49,23 @@ axios(url)
     })
     // console.log(fighterInfo);
 
+    $('.ath-lf .view-fighter-last-fight', html).each(function () {
+      const lastFightInfo = $(this).find('.views-row').text();
+      lastFight.push(lastFightInfo);      
+    })
+
+    // remove every 2nd element from lastFight array
+    for (let i = 0; i < lastFight.length; i++) {
+      if (i % 2 !== 0) {
+        lastFight.splice(i, 2);
+      }
+    }
+
+    // console.log(lastFight);
+
 
     app.get('/', (req, res) => {
-      res.render('index', { fighters: fighters, fighterImages: fighterImages, fighterLinks: fighterLinks, fighterInfo: fighterInfo, moment: moment });
+      res.render('index', { fighters: fighters, fighterImages: fighterImages, fighterLinks: fighterLinks, fighterInfo: fighterInfo, moment: moment, lastFight: lastFight });
     });
 
   })

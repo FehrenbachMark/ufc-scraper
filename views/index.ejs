@@ -19,7 +19,7 @@
     <span>As of: <%= moment().format('Do MMMM, YYYY'); %></span>
     <section class="fade-in">
       <% for (let i=0; i < fighters.length; i++) { %>
-        <section>
+        <section class="fighters">
           <p>
             <%= fighterInfo[i] %>
           </p>
@@ -29,6 +29,7 @@
               <%= fighters[i] %>
             </h2>
           </a>
+          <small>Last Fight: <%= lastFight[i] %></small>
         </section>
         <% } %>
     </section>

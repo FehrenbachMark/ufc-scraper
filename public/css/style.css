@@ -49,6 +49,12 @@ main section section {
   overflow: hidden;
 }
 
+.fighters small {
+  display: block;
+  height: 100%;
+  background: #240808;
+}
+
 main section img {
   width: 100%;
 }
