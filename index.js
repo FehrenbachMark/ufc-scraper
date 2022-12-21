@@ -19,7 +19,7 @@ axios(url)
   .then(response => {
     const html = response.data;
     const $ = cheerio.load(html);
-    // declare an empty array to store the data that we'll scrape
+    // declares empty arrays to store the data that we'll scrape
     const fighters = [];
     const fighterInfo = [];
     const fighterImages = [];
@@ -35,12 +35,14 @@ axios(url)
     });
     // console.log(fighters);
 
+    // finds the fighters images and adds them to the fighterImages array
     $('.c-embedded-single-media__item', html).each(function () {
       const image = $(this).find('img').attr('src');
       // add images to fighterImagers array
       fighterImages.push(image);
     })
     // console.log(fighterImages);
+    // finds the fighters info and adds them to the fighterInfo array
     $('.ath--winfo', html).each(function () {
       const info = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
       let newInfo = info.split(/(?=[A-Z])/).join(' ');
@@ -49,12 +51,14 @@ axios(url)
     })
     // console.log(fighterInfo);
 
+    // finds the fighters last fight and adds them to the lastFight array
     $('.ath-lf .view-fighter-last-fight', html).each(function () {
       const lastFightInfo = $(this).find('.views-row').text();
       lastFight.push(lastFightInfo);      
     })
+    // console.log(lastFight);
 
-    // remove every 2nd element from lastFight array
+    // removes every other element in the array for formatting purposes
     for (let i = 0; i < lastFight.length; i++) {
       if (i % 2 !== 0) {
         lastFight.splice(i, 2);
