@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- meta description -->
-    <meta name="description" content="Who are the current UFC champions?">
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- link favicon -->
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-    <title>WhoAreTheCurrentUFCChampions.info</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- meta description -->
+  <meta name="description" content="Who are the current UFC champions?">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- link favicon -->
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <title>WhoAreTheCurrentUFCChampions.info</title>
 </head>
+
 <body>
   <main>
     <h1>Current UFC Champions</h1>
-      <section>
-        <% for (let i = 0; i < fighters.length; i++) { %>
-            <section class="fade-in">
-              <p><%= fighterInfo[i] %></p>
-              <a href="<%= fighterLinks[i] %>" target="_blank">
-              <img src="<%= fighterImages[i] %>" alt="">
-              <h2><%= fighters[i] %></h2></a>
-            </section>
+    <span>As of: <%= moment().format('Do MMMM, YYYY'); %></span>
+    <section class="fade-in">
+      <% for (let i=0; i < fighters.length; i++) { %>
+        <section>
+          <p>
+            <%= fighterInfo[i] %>
+          </p>
+          <a href="<%= fighterLinks[i] %>" target="_blank">
+            <img src="<%= fighterImages[i] %>" alt="">
+            <h2>
+              <%= fighters[i] %>
+            </h2>
+          </a>
+        </section>
         <% } %>
-      </section>
-      <span>As of: <%= moment().format('Do MMMM, YYYY'); %></span>
+    </section>
+
+    <span>Content is property of UFC, for educational purposes only.</span>
+    <span>Created by: <a href="https://markfehrenbach.me" id="website">markfehrenbach.me</a> using Node, Express, and EJS.</span>
   </main>
-  <script type="text/html" src="/js/main.js"></script>
 </body>
+
 </html>
