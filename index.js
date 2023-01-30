@@ -46,7 +46,7 @@ axios(url)
     $('.ath--winfo', html).each(function () {
       const info = $(this).text().split('\n').join('').split("'").join('').split(' ').join('');
       let newInfo = info.split(/(?=[A-Z])/).join(' ');
-      let formattedFighterInfo = newInfo.replace(/\d+/, " $&");
+      let formattedFighterInfo = newInfo.replace(/\d+/, " $&").split(')')[0];
       fighterInfo.push(formattedFighterInfo);
     })
     // console.log(fighterInfo);
