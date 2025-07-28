@@ -19,24 +19,26 @@
     <span>As of: <%= moment().format('Do MMMM, YYYY'); %></span>
     <section class="fade-in">
       <% for (let i=0; i < fighters.length; i++) { %>
-        <section class="fighters">
+        <a href="<%= fighterLinks[i] %>" target="_blank" class="fighters" title="Visit <%= fighters[i] %>'s profile on UFC.com">
+          <span style="position: absolute;left: 0;right: 0; top: 0; bottom:0"></span>
+          <h2>
+            <%= fighters[i] %>
+          </h2>
+
+          <img src="<%= fighterImages[i] %>" alt="">
+
           <p>
             <%= fighterInfo[i] %>
-            )<!--added ')' to fix jamal hill google tag script showing, split at ')' in fighterInfo in index.js-->
           </p>
-          <a href="<%= fighterLinks[i] %>" target="_blank">
-            <img src="<%= fighterImages[i] %>" alt="">
-            <h2>
-              <%= fighters[i] %>
-            </h2>
-          </a>
+
           <small>Last Fight: <%= lastFight[i] %></small>
-        </section>
+        </a>
         <% } %>
     </section>
 
     <span>Content is property of UFC, for educational purposes only.</span>
-    <span>Created by: <a href="https://markfehrenbach.me" id="website">markfehrenbach.me</a> using Node, Express, and EJS.</span>
+    <span>Created by: <a href="https://markfehrenbach.me" id="website">markfehrenbach.me</a> using Node, Express, and
+      EJS.</span>
   </main>
 </body>
 
