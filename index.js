@@ -50,34 +50,29 @@ async function scrapeFighters() {
 let cachedData = null;
 let lastScrapeDate = null;
 
-app.get('/', async (req, res) => {
-  const today = moment().startOf('day');
-  const isMonday = today.isoWeekday() === 1; // Monday = 1
-  let useCache = false;
 
-  if (cachedData && lastScrapeDate && lastScrapeDate.isSame(today, 'day')) {
-    useCache = true;
+app.get('/', async (req, res) => {
+  const now = moment();
+  let shouldUpdate = false;
+
+  if (!cachedData || !lastScrapeDate) {
+    shouldUpdate = true;
+  } else {
+    // If cache is older than 24 hours, update
+    const hoursSinceLastScrape = now.diff(lastScrapeDate, 'hours');
+    if (hoursSinceLastScrape >= 24) {
+      shouldUpdate = true;
+    }
   }
 
-  if (!useCache && isMonday) {
+  if (shouldUpdate) {
     try {
       cachedData = await scrapeFighters();
-      lastScrapeDate = today;
-      console.log('Scraped new data on Monday.');
+      lastScrapeDate = now;
+      console.log('Scraped new data (cache expired or first run).');
     } catch (err) {
       console.log('Puppeteer scrape error:', err.message);
-      // fallback to cache if available
       if (!cachedData) cachedData = { fighters: [], fighterImages: [], lastFight: [], fighterLinks: [], fighterInfo: [] };
-    }
-  } else if (!cachedData) {
-    // If cache is empty and not Monday, scrape once
-    try {
-      cachedData = await scrapeFighters();
-      lastScrapeDate = today;
-      console.log('Scraped new data (first run or cache empty).');
-    } catch (err) {
-      console.log('Puppeteer scrape error:', err.message);
-      cachedData = { fighters: [], fighterImages: [], lastFight: [], fighterLinks: [], fighterInfo: [] };
     }
   }
 
