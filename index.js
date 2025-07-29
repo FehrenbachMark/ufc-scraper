@@ -16,7 +16,7 @@ app.use(express.json())
 
 // Scrape fighters using Puppeteer
 async function scrapeFighters() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   await page.goto('https://www.ufc.com/athletes', {
     waitUntil: 'networkidle2',
