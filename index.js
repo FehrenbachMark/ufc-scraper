@@ -50,6 +50,12 @@ async function scrapeFighters() {
 let cachedData = null;
 let lastScrapeDate = null;
 
+// cache clear route
+app.get('/clear-cache', (req, res) => {
+  cachedData = null;
+  lastScrapeDate = null;
+  res.send('Cache cleared via route!');
+});
 
 app.get('/', async (req, res) => {
   const now = moment();
