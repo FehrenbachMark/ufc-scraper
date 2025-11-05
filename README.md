@@ -5,7 +5,7 @@ This is a web scraper for pulling and displaying all of the current champions fr
 ## Usage
 
 ```bash
-$ node index.js
+$ node server.js
 ```
 
 ## Dependencies
