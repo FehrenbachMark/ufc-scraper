@@ -88,7 +88,6 @@ app.get('/', async (req, res) => {
     fighterLinks: cachedData.fighterLinks,
     fighterInfo: cachedData.fighterInfo,
     moment: moment,
-    lastScrapeDate: lastScrapeDate,
     lastFight: cachedData.lastFight
   });
 });
