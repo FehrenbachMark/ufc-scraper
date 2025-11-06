@@ -16,7 +16,7 @@
 <body>
   <main>
     <h1>Current UFC Champions</h1>
-    <span>As of: <%= lastScrapeDate ? moment(lastScrapeDate).format('Do MMMM, YYYY') : moment().format('Do MMMM, YYYY'); %></span>
+    <span>As of: <%= lastScrapeDate ? moment(lastScrapeDate).format('Do MMMM, YYYY, h:mm:ss A') : moment().format('Do MMMM, YYYY, h:mm:ss A'); %></span>
     <section class="fade-in">
       <% for (let i=0; i < fighters.length; i++) { %>
         <a href="<%= fighterLinks[i] %>" target="_blank" class="fighters" title="Visit <%= fighters[i] %>'s profile on UFC.com">
