@@ -7,38 +7,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- meta description -->
   <meta name="description" content="Who are the current UFC champions?">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/output.css">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
   <!-- link favicon -->
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <title>Current UFC Champs</title>
 </head>
 
-<body>
+<body class="bg-gray-900 text-center text-white font-sans py-2 lg:py-8">
   <main>
-    <h1>Current UFC Champions</h1>
-    <span>As of: <%= lastScrapeDate ? moment(lastScrapeDate).subtract(5, 'hours').format('Do MMMM, YYYY, h:mm:ss A') : 'N/A' %></span>
-    <section class="fade-in">
-      <% for (let i=0; i < fighters.length; i++) { %>
-        <a href="<%= fighterLinks[i] %>" target="_blank" class="fighters" title="Visit <%= fighters[i] %>'s profile on UFC.com">
-          <span style="position: absolute;left: 0;right: 0; top: 0; bottom:0"></span>
-          <h2>
-            <%= fighters[i] %>
-          </h2>
-
-          <img src="<%= fighterImages[i] %>" alt="">
-
-          <p>
-            <%= fighterInfo[i] %>
-          </p>
-
-          <small>Last Fight: <%= lastFight[i] %></small>
-        </a>
-        <% } %>
-    </section>
-
-    <span>Content is property of UFC, for educational purposes only.</span>
-    <span>Created by: <a href="https://markfehrenbach.me" id="website">markfehrenbach.me</a> using Node, Express, and
-      EJS.</span>
+    <h1 class="text-2xl lg:text-4xl font-bold font-sans">Current UFC Champions</h1>
+    <span class="font-mono">As of: <%= lastScrapeDate ? moment(lastScrapeDate).subtract(5, 'hours' ).format('MMMM Do - YYYY, h:mm A') : 'N/A' %></span>
+    <div class="fade-in flex flex-col items-center justify-center mt-4">
+      <section>
+        <h2 class="text-slate-200 text-xl lg:text-2xl mb-4 border-b border-b-white/50">Men</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-2 lg:gap-4">
+          <% for (let i=0; i < 8; i++) { %>
+            <div class="group flex flex-col gap-2">
+              <p class="underline decoration-solid decoration-white/50 text-pretty text-center m-auto">
+                <%= fighterInfo[i] %>
+              </p>
+              <a href="<%= fighterLinks[i] %>" target="_blank"
+                class="relative flex flex-col items-center justify-between bg-black/80 aspect-square p-2 text-center max-w-[80%] sm:max-w-xs m-auto rounded-lg"
+                title="Visit <%= fighters[i] %>'s profile on UFC.com">
+                <span class="absolute inset-0"></span>
+                <h2
+                  class="text-xl font-bold font-sans underline decoration-solid decoration-white/50 group-hover:decoration-white">
+                  <%= fighters[i] %>
+                </h2>
+                <img class="group-hover:scale-105 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
+                <span
+                  class="font-mono text-md underline decoration-solid decoration-white/50 group-hover:decoration-white">Last
+                  Fight: <%= lastFight[i] %></span>
+              </a>
+            </div>
+          <% } %>
+        </div>
+      </section>
+      <div class="border-t border-black/80 w-full my-4"></div>
+      <section>
+        <h2 class="text-slate-200 text-xl lg:text-2xl mb-4 border-b border-b-white/50">Women</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-2 lg:gap-4">
+          <% for (let i=8; i < fighters.length; i++) { %>
+            <div class="group flex flex-col gap-2">
+              <p class="underline decoration-solid decoration-white/50 text-pretty text-center m-auto">
+                <%= fighterInfo[i] %>
+              </p>
+              <a href="<%= fighterLinks[i] %>" target="_blank"
+                class="relative flex flex-col items-center justify-between bg-black/80 aspect-square p-2 text-center max-w-[80%] sm:max-w-xs m-auto rounded-lg"
+                title="Visit <%= fighters[i] %>'s profile on UFC.com">
+                <span class="absolute inset-0"></span>
+                <h2
+                  class="text-xl font-bold font-sans underline decoration-solid decoration-white/50 group-hover:decoration-white">
+                  <%= fighters[i] %>
+                </h2>
+                <img class="group-hover:scale-105 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
+                <span
+                  class="font-mono text-md underline decoration-solid decoration-white/50 group-hover:decoration-white">Last
+                  Fight: <%= lastFight[i] %></span>
+              </a>
+            </div>
+          <% } %>
+        </div>
+      </section>
+    </div>
+    </div>
+    <div class="border-t border-black/80 w-full my-4"></div>
+    <footer class="flex flex-col justify-center items-center gap-2 my-4 font-mono text-xl">
+      <span>Content is property of UFC, for educational purposes only.</span>
+      <span>Created by: <a href="https://markfehrenbach.me" target="_blank" id="website"
+          class="underline decoration-white/50 hover:decoration-white">markfehrenbach.me</a> using Node, Express, EJS,
+        and Tailwind.</span>
+    </footer>
   </main>
 </body>
 
