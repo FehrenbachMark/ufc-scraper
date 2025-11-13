@@ -35,7 +35,7 @@
                   class="text-xl font-bold font-sans underline decoration-solid decoration-white/50 group-hover:decoration-white">
                   <%= fighters[i] %>
                 </h2>
-                <img class="group-hover:scale-105 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
+                <img class="group-hover:scale-110 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
                 <span
                   class="font-mono text-md underline decoration-solid decoration-white/50 group-hover:decoration-white">Last
                   Fight: <%= lastFight[i] %></span>
@@ -61,7 +61,7 @@
                   class="text-xl font-bold font-sans underline decoration-solid decoration-white/50 group-hover:decoration-white">
                   <%= fighters[i] %>
                 </h2>
-                <img class="group-hover:scale-105 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
+                <img class="group-hover:scale-110 ease-in-out duration-300" src="<%= fighterImages[i] %>" alt="">
                 <span
                   class="font-mono text-md underline decoration-solid decoration-white/50 group-hover:decoration-white">Last
                   Fight: <%= lastFight[i] %></span>
@@ -80,6 +80,14 @@
         and Tailwind.</span>
     </footer>
   </main>
+  <script type="module">
+    import { animate, stagger, hover } from "https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm";    
+    animate(".group", { opacity: [0, 1], y: [300, 0] }, { delay: stagger(0.07) });
+    hover(".group", (element) => {
+        animate(element, { scale: 1.06 })
+        return () => animate(element, { scale: 1 })
+    });
+  </script>
 </body>
 
 </html>
