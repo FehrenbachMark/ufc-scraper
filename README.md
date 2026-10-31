@@ -1,36 +1,34 @@
-# UFC.com champion scraper
+# UFC Champions
 
-This is a web scraper for pulling and displaying all of the current champions from ufc.com. It is a work in progress.
+Shows the current UFC champions and the next UFC event's full fight card, scraped from ufc.com. Built with Next.js, React, Motion, and Tailwind.
 
 ## Usage
 
 ```bash
-$ node server.js
+npm install
+npm run dev     # http://localhost:3000
+npm run build && npm start
+npm test        # parser tests (no network)
 ```
 
-## Dependencies
+## How it works
 
--   [Express](https://expressjs.com/)
--   [EJS](https://ejs.co/)
--   [Cheerio](https://cheerio.js.org/)
--   [Axios](https://github.com/axios/axios)
--   [dotenv](https://www.npmjs.com/package/dotenv)
--   [moment](https://momentjs.com/)
+- `lib/ufc/selectors.js`: every CSS selector used against ufc.com, with what each one returns. Start here when the site's markup changes.
+- `lib/ufc/champions.js`, `lib/ufc/events.js`: pure HTML → data parsers (tested in `test/` against trimmed fixtures).
+- `lib/data.js`: `getChampions()` and `getNextEvent()`, cached with Next's `'use cache'`. Champions refresh daily and the next event hourly. A failed refresh keeps serving the last good data.
+- Pages: `app/page.jsx` (champions, `/`), `app/next-event/page.jsx` (`/next-event`) and `app/fighter/[slug]/page.jsx` (`/fighter/joshua-van`: profile + last 5 fights, cached daily per fighter). `components/` holds the UI, built on the shared `Panel`.
 
+All the ufc.com pages used (`/athletes`, `/events`, `/event/<slug>`) are server-rendered, so a plain `fetch` + cheerio is enough; no headless browser.
 
 ## License
 
-[MIT](https://github.com/FehrenbachMark/ufc-scraper/blob/main/license.txt) © 
+[MIT](https://github.com/FehrenbachMark/ufc-scraper/blob/main/license.txt)
 
-## Contributing
-
-This is for educational purposes only. Please do not contribute.
+Content is property of UFC, for educational purposes only.
 
 ## Author
 
 **Mark Fehrenbach**
 
-*   [github/](https://github.com/fehrenbachmark)
-*   [twitter/](http://twitter.com/fehrenbachmark)
-
-
+- [github/](https://github.com/fehrenbachmark)
+- [twitter/](http://twitter.com/fehrenbachmark)
