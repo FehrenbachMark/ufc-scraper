@@ -10,14 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "cheerio": "^1.2.0",
     "motion": "^14.9.0",
     "next": "^16.4.3",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.3",
+    "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3"
   },
   "private": true,
