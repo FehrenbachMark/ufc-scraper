@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseChampions } from '../lib/ufc/champions.js';
-import { parseEventPage, parseNextEventListing } from '../lib/ufc/events.js';
+import { parseEventPage, parseLiveResults, parseNextEventListing } from '../lib/ufc/events.js';
 import { parseAthleteFights, parseAthleteProfile } from '../lib/ufc/athlete.js';
 
 const fixture = (name) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf8');
@@ -84,6 +84,22 @@ test('parseEventPage reads the fight card by section', () => {
   assert.equal(prelim.red.rank, null);
   assert.equal(prelim.red.odds, null);
   assert.equal(prelim.blue.name, 'Tainara Lisboa');
+
+  assert.equal(event.liveStatsId, '1339');
+  assert.equal(main.id, '13133');
+  assert.equal(prelim.id, null);
+});
+
+test('parseEventPage has no liveStatsId without the settings block', () => {
+  assert.equal(parseEventPage('<html></html>').liveStatsId, null);
+});
+
+test('parseLiveResults keeps finished fights, keyed by fight id', () => {
+  assert.deepEqual(parseLiveResults(JSON.parse(fixture('live.json'))), {
+    13133: { winner: 'blue', method: 'KO/TKO', round: 3, time: '1:28' },
+    13200: { winner: null, method: 'Decision - Majority', round: 3, time: '5:00' }, // draw
+  });
+  assert.deepEqual(parseLiveResults(null), {});
 });
 
 test('parseAthleteProfile reads the header, stats and bio', () => {

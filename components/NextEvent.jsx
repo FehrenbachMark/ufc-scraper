@@ -4,7 +4,7 @@ import { FighterLink } from './FighterLink';
 import { Headshot, Panel, PanelSection } from './Panel';
 import { Reveal } from './Reveal';
 
-export function NextEvent({ event }) {
+export function NextEvent({ event, results }) {
   const { startTimes } = event;
   const firstStart = startTimes.earlyPrelims ?? startTimes.prelims ?? startTimes.mainCard;
   const schedule = [
@@ -35,7 +35,7 @@ export function NextEvent({ event }) {
       {event.sections.map((section) => (
         <PanelSection key={section.name} title={section.name}>
           {section.fights.map((fight, i) => (
-            <FightRow key={`${fight.red.name}-${fight.blue.name}`} fight={fight} index={i} />
+            <FightRow key={`${fight.red.name}-${fight.blue.name}`} fight={fight} result={results[fight.id]} index={i} />
           ))}
         </PanelSection>
       ))}
@@ -45,24 +45,28 @@ export function NextEvent({ event }) {
 
 // The middle column is a fixed width, so photos and names line up down the
 // whole card no matter how long each weight class label is.
-function FightRow({ fight, index }) {
+function FightRow({ fight, result, index }) {
   return (
     <Reveal
       index={index}
       className="grid grid-cols-[minmax(0,1fr)_6rem_minmax(0,1fr)] items-center gap-2 py-2 sm:grid-cols-[minmax(0,1fr)_10rem_minmax(0,1fr)] sm:gap-4"
     >
-      <Corner fighter={fight.red} side="red" />
+      <Corner fighter={fight.red} side="red" won={result?.winner === 'red'} />
       <div className="flex flex-col items-center text-center text-xs sm:text-sm">
         {fight.titleFight && <span className="rounded bg-amber-500/20 px-1.5 font-semibold text-amber-300">Title</span>}
         <span className="text-slate-300">{fight.weightClass?.replace(/\s*Title$/, '')}</span>
-        <span className="text-slate-500">vs</span>
+        {result ? (
+          <span className="text-slate-400">{[result.method, result.round && `R${result.round}`, result.time].filter(Boolean).join(' · ')}</span>
+        ) : (
+          <span className="text-slate-500">vs</span>
+        )}
       </div>
-      <Corner fighter={fight.blue} side="blue" />
+      <Corner fighter={fight.blue} side="blue" won={result?.winner === 'blue'} />
     </Reveal>
   );
 }
 
-function Corner({ fighter, side }) {
+function Corner({ fighter, side, won }) {
   const isRed = side === 'red';
   return (
     <FighterLink
@@ -75,6 +79,7 @@ function Corner({ fighter, side }) {
         <p className="text-sm font-semibold wrap-break-word group-hover:underline sm:text-base">
           {fighter.rank && <span className="mr-1 text-xs text-slate-400">{fighter.rank}</span>}
           {fighter.name}
+          {won && <span className="mx-1 inline-block rounded bg-emerald-500/20 px-1.5 text-xs font-semibold text-emerald-300">WIN</span>}
         </p>
         <p className="font-mono text-xs text-slate-400">{[fighter.country, fighter.odds].filter(Boolean).join(' · ')}</p>
       </div>

@@ -1,0 +1,34 @@
+{
+  "LiveEventDetail": {
+    "Status": "Live",
+    "FightCard": [
+      {
+        "FightId": 13133,
+        "Status": "Final",
+        "Fighters": [
+          { "Corner": "Red", "Outcome": { "OutcomeId": 2, "Outcome": "Loss" } },
+          { "Corner": "Blue", "Outcome": { "OutcomeId": 1, "Outcome": "Win" } }
+        ],
+        "Result": { "Method": "KO/TKO", "EndingRound": 3, "EndingTime": "1:28" }
+      },
+      {
+        "FightId": 13200,
+        "Status": "Final",
+        "Fighters": [
+          { "Corner": "Red", "Outcome": { "OutcomeId": 3, "Outcome": "Draw" } },
+          { "Corner": "Blue", "Outcome": { "OutcomeId": 3, "Outcome": "Draw" } }
+        ],
+        "Result": { "Method": "Decision - Majority", "EndingRound": 3, "EndingTime": "5:00" }
+      },
+      {
+        "FightId": 13228,
+        "Status": "Live",
+        "Fighters": [
+          { "Corner": "Red", "Outcome": { "OutcomeId": null, "Outcome": null } },
+          { "Corner": "Blue", "Outcome": { "OutcomeId": null, "Outcome": null } }
+        ],
+        "Result": { "Method": null, "EndingRound": null, "EndingTime": null }
+      }
+    ]
+  }
+}
